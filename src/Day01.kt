@@ -6,14 +6,10 @@ fun main() {
             "six", "seven", "eight", "nine", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 
     fun part1(input: List<String>): Int {
-        // return input.size
         var sum = 0
         input.forEach { line ->
             val digitsInLine: String = line.filter { it.isDigit() }
-            val firstDigit = digitsInLine.first()
-            val lastDigit = digitsInLine.last()
-            val lineValue = "$firstDigit" + "$lastDigit"
-            sum += lineValue.toInt()
+            sum += ("${digitsInLine.first()}" + "${digitsInLine.last()}").toInt()
         }
         return sum
     }
@@ -23,8 +19,7 @@ fun main() {
         input.forEach { line ->
             val firstDigit = line.findAnyOf(strings = validNumbers, ignoreCase = true)?.second?.convertToInt()
             val lastDigit = line.findLastAnyOf(strings = validNumbers, ignoreCase = true)?.second?.convertToInt()
-            val lineValue = "$firstDigit" + "$lastDigit"
-            sum += lineValue.toInt()
+            sum += ("$firstDigit" + "$lastDigit").toInt()
         }
         return sum
     }
@@ -42,7 +37,6 @@ fun main() {
     val part2TestInput = readInput("day01_part2_test")
     part2(part2TestInput).println()
     check(part2(part2TestInput) == 281)
-
 
     part2(input).println()
     check(part2(input) == 53515)
